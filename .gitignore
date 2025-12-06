@@ -18,6 +18,7 @@ jspm_packages/
 .env.*
 *.env
 *.env.*
+!.env.example
 
 # IDE-specific files
 .vscode/
