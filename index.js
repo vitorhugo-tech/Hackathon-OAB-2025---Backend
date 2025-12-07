@@ -89,7 +89,7 @@ async function sendEmail(to, subject, text) {
     from: `"Análise Jurídica" <${process.env.SMTP_USER}>`,
     to,
     subject,
-    text:
+    html:
     `<!DOCTYPE html>
     <html lang="pt-BR">
       <body style="margin:0; padding:0; background-color:#f5f5f5; font-family: Arial, Helvetica, sans-serif;">
