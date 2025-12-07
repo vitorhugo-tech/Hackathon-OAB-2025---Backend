@@ -88,6 +88,12 @@ app.post("/upload-pdf", async (req, res) => {
       analysisResult
     );
 
+    res.json({
+      status: "Sucesso",
+      message: "Análise enviada por e-mail.",
+      email: userEmail
+    });
+
     console.log("📧 Email enviado para", userEmail);
     console.log("📝 Conteúdo:", analysisResult);
   } catch (error) {
