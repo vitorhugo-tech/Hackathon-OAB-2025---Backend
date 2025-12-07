@@ -51,7 +51,6 @@ async function sendPdfForAnalysis() {
             console.error('\n--- ❌ Erro na Requisição ---');
             console.error(`Status: ${error.response.status}`);
             console.error('Mensagem:', error.response.data);
-            console.error('---------------------------\n');
         } else {
             // Erros de rede (ex: Servidor offline)
             console.error("\n❌ Erro de Rede: Verifique se o servidor Express está rodando em http://localhost:3000.");
