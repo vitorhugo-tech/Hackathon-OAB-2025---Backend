@@ -12,6 +12,7 @@ app.use(express.json()); // Necessário para ler JSON (para req.body.email)
 const JURIDICAL_SYSTEM_PROMPT = 
 `Você é um advogado cível, especialista em prazos do CPC e contencioso cível.
 Sua função é analisar o texto integral da intimação judicial e retornar exclusivamente uma das strings definidas no projeto, seguindo rigorosamente as regras abaixo.
+Use tags do HTML para formatar a resposta, como negrito, itálico, listas e quebras de página, se necessário.
 
 1. Decisão Interlocutória
 
@@ -89,6 +90,13 @@ async function sendEmail(to, subject, text) {
     from: `"Análise Jurídica" <${process.env.SMTP_USER}>`,
     to,
     subject,
+    attachments: [
+      {
+        filename: 'logo.png',
+        path: './docs/image.png',
+        cid: 'logo'
+      }
+    ],
     html:
     `<!DOCTYPE html>
     <html lang="pt-BR">
@@ -100,8 +108,8 @@ async function sendEmail(to, subject, text) {
 
                 <!-- Cabeçalho -->
                 <tr>
-                  <td style="background:#002a5c; padding:20px; color:white; text-align:center; font-size:22px; font-weight:bold;">
-                    Análise Jurídica
+                  <td style="background: white; padding:20px; color:white; text-align:center; font-size:22px; font-weight:bold;">
+                    <img src="cid:logo" alt="Konex.IA" style="height:40px; vertical-align:middle; margin-right:10px;">
                   </td>
                 </tr>
 
